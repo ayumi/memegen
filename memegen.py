@@ -45,7 +45,10 @@ def post_images():
 
 @app.route('/meme/<int:meme_id>', methods=['GET'])
 def get_meme(meme_id):
-    return redirect(url_for('static', filename='memes/%d.png' % meme_id))
+    image = dict()
+    image['id'] = meme_id
+    return render_template('made_meme.html', image=image)
+    # return redirect(url_for('static', filename='memes/%d.png' % meme_id))
 
 @app.route('/meme', methods=['GET'])
 def get_memes():
@@ -75,7 +78,11 @@ def post_meme():
                            request.form['top'],
                            request.form['bottom'],
                            meme_id)
-    return redirect(url_for('static', filename='memes/%d.png' % meme_id))
+    image = dict()
+    image['id'] = meme_id
+    text = request.form['top'] + request.form['bottom']
+    return render_template('made_meme.html', image=image, text=text)
+    # return redirect(url_for('static', filename='memes/%d.png' % meme_id))
 
 @app.teardown_appcontext
 def close_connection(exception):

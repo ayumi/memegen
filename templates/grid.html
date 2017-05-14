@@ -1,10 +1,21 @@
+<style>
+    body {
+      padding: 0 1rem;
+    }
+    body, form, input, select, button, label {
+      font-family: 'Comic Sans MS', monospace;
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+</style>
+
 {% if form_data.to_upload %}
     {% include  "image_upload.html" %}
 {% endif %}
 {% block body %}
-    {% for image in form_data.images %}
+    <!-- {% for image in form_data.images %}
         <a href={{image.id_url}}>
             <img src='{{image.img_url}}' width="256" height="256">
         </a>
-    {% endfor %}
+    {% endfor %} -->
 {% endblock %}

@@ -11,16 +11,20 @@
       display: inline-block;
       width: 4rem;
     }
-    .base-image {
-      max-height: 15em;
+    .captioned-image {
+      max-height: 20em;
+    }
+    pre {
+      font-size: 3rem;
+      font-weight: bold;
     }
 </style>
 
-<h1>DEEP MEME</h1>
-<h2>2. Provide witty text</h2>
-<img class="base-image" src={{ url_for('static', filename='images/%s' % image.name)}}>
-<br>
-<form action={{url_for('post_meme')}} method="post">
+<!-- <h1>DEEP MEME</h1> -->
+<h3>Deep Meme analyzed your text and determined it to be:</h3>
+<pre>{{text}}</pre>
+<img class="captioned-image" src={{ url_for('static', filename='memes/%s.png' % image.id)}}>
+<!-- <form action={{url_for('post_meme')}} method="post">
     <input type="hidden" name="image" value={{image.id}}>
     <div>
       <label>Top:</label>
@@ -29,4 +33,4 @@
       <input type="text" name="bottom">
     </div>
     <div><input type="submit" value="Submit"></div>
-</form>
+</form> -->
