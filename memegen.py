@@ -2,7 +2,9 @@ import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, \
      abort, render_template, flash
 import memegenerator
+import memeviz
 import dao
+import subprocess
 
 DATABASE= 'memegen.db'
 
@@ -80,8 +82,10 @@ def post_meme():
                            meme_id)
     image = dict()
     image['id'] = meme_id
-    text = request.form['top'] + request.form['bottom']
-    return render_template('made_meme.html', image=image, text=text)
+    imagePath = url_for('static', filename='memes/%s.png' % meme_id)
+    resultPath = memeviz.bound_image('.' + imagePath)
+    analysisResult = subprocess.check_output('tesseract -l impact %s stdout' % resultPath, shell=True)
+    return render_template('made_meme.html', image=image, text=analysisResult)
     # return redirect(url_for('static', filename='memes/%d.png' % meme_id))
 
 @app.teardown_appcontext

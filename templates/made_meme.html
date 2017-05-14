@@ -21,9 +21,11 @@
 </style>
 
 <!-- <h1>DEEP MEME</h1> -->
-<h3>Deep Meme analyzed your text and determined it to be:</h3>
+<h3>Deep Meme analyzed your image and determined it to be:</h3>
 <pre>{{text}}</pre>
-<img class="captioned-image" src={{ url_for('static', filename='memes/%s.png' % image.id)}}>
+<img class="captioned-image" src={{ url_for('static', filename='memes/%s.png' % image.id) }}>
+
+<h2><a href="/">Start over</a></h2>
 <!-- <form action={{url_for('post_meme')}} method="post">
     <input type="hidden" name="image" value={{image.id}}>
     <div>
