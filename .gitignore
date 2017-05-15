@@ -1,3 +1,4 @@
 static/
 out/
 *.pyc
+memegen.db
